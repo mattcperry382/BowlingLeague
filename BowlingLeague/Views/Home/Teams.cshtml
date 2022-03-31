@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Teams";
+}
+
+@model List<Team>
+
+<h1>Teams</h1>
+
+<table class="table table-responsive table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <td>Team ID</td>
+            <td>Team Name</td>
+            <td>Captain ID</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.TeamID</td>
+                <td>@t.TeamName</td>
+                <td>@t.CaptainID</td>
+            </tr>
+        }
+    </tbody>
+</table>

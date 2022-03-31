@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BowlingLeague.Pages.Admin
+namespace BowlingLeague.Pages
 {
-    public class IndexModel : PageModel
+    public class ConfirmationModel : PageModel
     {
         public void OnGet()
         {

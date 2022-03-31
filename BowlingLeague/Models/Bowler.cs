@@ -28,8 +28,9 @@ namespace BowlingLeague.Models
         public string BowlerZip { get; set; }
         [Required]
         public string BowlerPhoneNumber { get; set; }
-        [Required]
-        public int TeamID { get; set; }
 
+        public int TeamID { get; set; }
+        [Required]
+        public Team Team { get; set; }
     }
 }

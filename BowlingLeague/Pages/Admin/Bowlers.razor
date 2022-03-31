@@ -1,0 +1,78 @@
+﻿@page "/admin/bowlers"
+@page "/admin"
+@inherits OwningComponentBase<IBowlingRepository>
+
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                <td>Bowler ID</td>
+                <td>Full Name</td>
+                <td>Address</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Zip</td>
+                <td>Phone Number</td>
+                <td>Team</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (BowlerData?.Count() > 0)
+            {
+            @foreach (Bowler b in BowlerData)
+            {
+            <tr>
+                <td>@b.BowlerID</td>
+                <td>@b.BowlerFirstName @b.BowlerMiddleInit @b.BowlerLastName</td>
+                <td>@b.BowlerAddress</td>
+                <td>@b.BowlerCity</td>
+                <td>@b.BowlerState</td>
+                <td>@b.BowlerZip</td>
+                <td>@b.BowlerPhoneNumber</td>
+                <td>@b.Team.TeamName</td>
+                <td>
+                    <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(b.BowlerID)">Details</NavLink>
+                </td>
+                <td>
+                    <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(b.BowlerID)">Edit</NavLink>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveBowler(b))">Delete</button>
+                </td>
+            </tr>
+            }
+            }
+            else
+            {
+            <tr>
+                <td colspan="5" class="text-center">No Bowlers</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <NavLink class="btn btn-primary" href="/admin/bowlers/create">Create</NavLink>
+
+    @code {
+        public IBowlingRepository repo => Service;
+
+        public IEnumerable<Bowler>
+            BowlerData { get; set; }
+
+        protected async override Task OnInitializedAsync()
+        {
+            await UpdateData();
+        }
+
+        public async Task UpdateData()
+        {
+            BowlerData = await repo.Bowlers.Include(x => x.Team).ToListAsync();
+        }
+
+        public string GetDetailsUrl(long id) => $"admin/bowlers/details/{id}";
+        public string GetEditUrl(long id) => $"admin/bowlers/edit/{id}";
+        public async Task RemoveBowler(Bowler b)
+        {
+            repo.DeleteBowler(b);
+            await UpdateData();
+        }
+        }

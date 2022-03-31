@@ -33,6 +33,8 @@ namespace BowlingLeague
             });
 
             services.AddScoped<IBowlingRepository, EFBowlingRepository>();
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +53,7 @@ namespace BowlingLeague
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            
             app.UseRouting();
 
             app.UseAuthorization();
@@ -60,6 +63,10 @@ namespace BowlingLeague
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });
         }
     }

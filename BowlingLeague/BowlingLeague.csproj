@@ -5,19 +5,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Admin\**" />
-    <Content Remove="Pages\Admin\**" />
-    <EmbeddedResource Remove="Pages\Admin\**" />
-    <None Remove="Pages\Admin\**" />
+    <Content Remove="Pages\Admin\Details.razor" />
+    <Content Remove="Pages\Admin\Editor.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Admin\AdminLayout.razor" />
+    <None Include="Pages\Admin\Bowlers.razor" />
+    <None Include="Pages\Admin\Index.cshtml" />
+    <None Include="Pages\Admin\Routed.razor" />
+    <None Include="Pages\Admin\_Imports.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.23">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.23">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.7" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\" />
   </ItemGroup>
 
 </Project>

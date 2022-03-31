@@ -1,21 +1,18 @@
 ﻿@page "/admin"
 
-@using Microsoft.AspNetCore.Authorization
-@attribute [Authorize]
-
-@model BookStore.Pages.Admin.IndexModel
+@model BowlingLeague.Pages.Admin.IndexModel
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Bookstore Admin</title>
+    <title>Bowling League Admin</title>
     <link href="~/lib/css/bootstrap.min.css" rel="stylesheet" />
     <base href="/" />
 </head>
 <body>
 
-    <component type="typeof(BookStore.Pages.Admin.Routed)" render-mode="Server">
+    <component type="typeof(BowlingLeague.Pages.Admin.Routed)" render-mode="Server">
     <script src="/_framework/blazor.server.js"></script>
 </body>
 </html>

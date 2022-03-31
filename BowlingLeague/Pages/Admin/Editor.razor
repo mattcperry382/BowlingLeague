@@ -1,12 +1,12 @@
-﻿@page "/admin/books/edit/{id:long}"
-@page "/admin/books/create"
-@inherits OwningComponentBase<IBookstoreRepository>
+﻿@page "/admin/bowlers/edit/{id:long}"
+@page "/admin/bowlers/create"
+@inherits OwningComponentBase<IBowlingRepository>
 
 <style>
     div.validation-message {color: rgb(220,53,69); font-weight: 500;}
 </style>
 
-<h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText Book</h3>
+<h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText Bowler</h3>
 
 <EditForm Model="b" OnValidSubmit="SaveBook">
     <DataAnnotationsValidator></DataAnnotationsValidator>
