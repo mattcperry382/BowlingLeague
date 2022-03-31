@@ -6,9 +6,32 @@
 
 <h1>Bowlers</h1>
 
-<ul>
-    @foreach (var b in Model)
-    {
-        <li>@b.BowlerID - @b.BowlerFirstName @b.BowlerLastName</li>
-    }
-</ul>
+<table class="table table-responsive table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zip</td>
+            <td>Phone Number</td>
+            <td>Team ID</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td>@b.BowlerID</td>
+                <td>@b.BowlerFirstName @b.BowlerMiddleInit @b.BowlerLastName</td>
+                <td>@b.BowlerAddress</td>
+                <td>@b.BowlerCity</td>
+                <td>@b.BowlerState</td>
+                <td>@b.BowlerZip</td>
+                <td>@b.BowlerPhoneNumber</td>
+                <td>@b.TeamID</td>
+            </tr>
+        }
+    </tbody>
+</table>
