@@ -65,6 +65,7 @@ namespace BowlingLeague
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });

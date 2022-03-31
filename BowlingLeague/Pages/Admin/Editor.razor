@@ -8,56 +8,56 @@
 
 <h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText Bowler</h3>
 
-<EditForm Model="b" OnValidSubmit="SaveBook">
+<EditForm Model="b" OnValidSubmit="SaveBowler">
     <DataAnnotationsValidator></DataAnnotationsValidator>
 
     <div class="form-group">
-        <label>Book Id</label>
-        <input type="number" class="form-control" disabled value="@b.BookId" />
+        <label>Bowler Id</label>
+        <input type="number" class="form-control" disabled value="@b.BowlerID" />
     </div>
     <div class="form-group">
-        <label>Title</label>
-        <ValidationMessage For="@(() => b.Title)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="b.Title"></InputText>
+        <label>First Name</label>
+        <ValidationMessage For="@(() => b.BowlerFirstName)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.BowlerFirstName"></InputText>
     </div>
     <div class="form-group">
-        <label>Author</label>
-        <ValidationMessage For="@(() => b.Author)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="b.Author"></InputText>
+        <label>Middle Initial</label>
+        <ValidationMessage For="@(() => b.BowlerMiddleInit)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.BowlerMiddleInit"></InputText>
     </div>
     <div class="form-group">
-        <label>Publisher</label>
-        <ValidationMessage For="@(() => b.Publisher)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="b.Publisher"></InputText>
+        <label>Last Name</label>
+        <ValidationMessage For="@(() => b.BowlerLastName)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.BowlerLastName"></InputText>
     </div>
     <div class="form-group">
-        <label>ISBN</label>
-        <ValidationMessage For="@(() => b.Isbn)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="b.Isbn"></InputText>
+        <label>Address</label>
+        <ValidationMessage For="@(() => b.BowlerAddress)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.BowlerAddress"></InputText>
     </div>
     <div class="form-group">
-        <label>Classification</label>
-        <ValidationMessage For="@(() => b.Classification)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="b.Classification"></InputText>
+        <label>City</label>
+        <ValidationMessage For="@(() => b.BowlerCity)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.BowlerCity"></InputText>
     </div>
     <div class="form-group">
-        <label>Category</label>
-        <ValidationMessage For="@(() => b.Category)"></ValidationMessage>
-        <InputText class="form-control" @bind-Value="b.Category"></InputText>
+        <label>State</label>
+        <ValidationMessage For="@(() => b.BowlerState)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.BowlerState"></InputText>
     </div>
     <div class="form-group">
-        <label>Page Count</label>
-        <ValidationMessage For="@(() => b.PageCount)"></ValidationMessage>
-        <InputNumber class="form-control" @bind-Value="b.PageCount"></InputNumber>
+        <label>Zip</label>
+        <ValidationMessage For="@(() => b.BowlerZip)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.BowlerZip"></InputText>
     </div>
     <div class="form-group">
-        <label>Price</label>
-        <ValidationMessage For="@(() => b.Price)"></ValidationMessage>
-        <InputNumber class="form-control" @bind-Value="b.Price"></InputNumber>
+        <label>Phone Number</label>
+        <ValidationMessage For="@(() => b.BowlerPhoneNumber)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="b.BowlerPhoneNumber"></InputText>
     </div>
     <br />
     <button type="submit" class="btn btn-@ThemeColor">Save</button>
-    <NavLink class="btn btn-secondary" href="/admin/books">Back</NavLink>
+    <NavLink class="btn btn-secondary" href="/admin/bowlers">Back</NavLink>
 </EditForm>
 
 @code {
@@ -67,29 +67,29 @@
     public string ThemeColor => Id == 0 ? "primary" : "warning";
     public string TitleText => Id == 0 ? "Create" : "Edit";
 
-    public Book b { get; set; } = new Book();
+    public Bowler b { get; set; } = new Bowler();
 
-    public IBookstoreRepository repo => Service;
+    public IBowlingRepository repo => Service;
     protected override void OnParametersSet()
     {
-        if (Id != 0) // existing book
+        if (Id != 0) // existing bowler
         {
-            b = repo.Books.FirstOrDefault(x => x.BookId == Id);
+            b = repo.Bowlers.FirstOrDefault(x => x.BowlerID == Id);
         }
     }
 
-    public void SaveBook()
+    public void SaveBowler()
     {
         if (Id == 0)
         {
-            repo.CreateBook(b);
+            repo.CreateBowler(b);
         }
         else
         {
-            repo.SaveBook(b);
+            repo.SaveBowler(b);
         }
 
-        NavManager.NavigateTo("/admin/books");
+        NavManager.NavigateTo("/admin/bowlers");
     }
 
     [Inject]

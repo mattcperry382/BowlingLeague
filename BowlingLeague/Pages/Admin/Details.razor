@@ -5,44 +5,36 @@
 <table class="table table-sm table-bordered table-striped">
     <tr>
         <th>Bowler ID</th>
-        <td>@b.BowlerId</td>
+        <td>@b.BowlerID</td>
     </tr>
     <tr>
         <th>Full Name</th>
         <td>@b.BowlerFirstName @b.BowlerMiddleInit @b.BowlerLastName</td>
     </tr>
     <tr>
-        <th></th>
-        <td>@b.</td>
+        <th>Address</th>
+        <td>@b.BowlerAddress</td>
     </tr>
     <tr>
-        <th>Publisher</th>
-        <td>@b.Publisher</td>
+        <th>City</th>
+        <td>@b.BowlerCity</td>
     </tr>
     <tr>
-        <th>Isbn</th>
-        <td>@b.Isbn</td>
+        <th>State</th>
+        <td>@b.BowlerState</td>
     </tr>
     <tr>
-        <th>Classification</th>
-        <td>@b.Classification</td>
+        <th>Zip</th>
+        <td>@b.BowlerZip</td>
     </tr>
     <tr>
-        <th>Category</th>
-        <td>@b.Category</td>
-    </tr>
-    <tr>
-        <th>PageCount</th>
-        <td>@b.PageCount</td>
-    </tr>
-    <tr>
-        <th>Price</th>
-        <td>@b.Price</td>
+        <th>Phone Number</th>
+        <td>@b.BowlerPhoneNumber</td>
     </tr>
 </table>
 
 <NavLink class="btn btn-warning" href="@EditUrl">Edit</NavLink>
-<NavLink class="btn btn-secondary" href="/admin/books">Back</NavLink>
+<NavLink class="btn btn-secondary" href="/admin/bowlers">Back</NavLink>
 
 @code {
     [Inject]

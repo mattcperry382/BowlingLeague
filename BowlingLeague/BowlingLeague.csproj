@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Admin\Details.razor" />
-    <Content Remove="Pages\Admin\Editor.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="Pages\Admin\AdminLayout.razor" />
     <None Include="Pages\Admin\Bowlers.razor" />
     <None Include="Pages\Admin\Index.cshtml" />
