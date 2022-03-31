@@ -19,10 +19,20 @@ namespace BowlingLeague.Controllers
             _repo = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string team)
         {
+            if (team == null)
+            {
+                ViewBag.Team = "";
+            }
+            else
+            {
+                ViewBag.Team = team;
+            }
+
             var bowlers = _repo.Bowlers
                 .Include(x => x.Team)
+                .Where(x => x.Team.TeamName == team || team == null)
                 .ToList();
 
             return View(bowlers);

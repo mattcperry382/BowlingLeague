@@ -61,6 +61,9 @@ namespace BowlingLeague
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "team",
+                    pattern: "{controller=Home}/{action=Index}/{team}/{id?}");
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
